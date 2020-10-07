@@ -21,10 +21,17 @@ describe('ReelGoodController', () => {
 
   describe('getSeries', () => {
     it('should return some data', async () => {
-        var mockData: Series[] = [{ id: '0', title: 'test'}];
-        var response: AxiosResponse<Series[]> = { data: mockData, status: null, statusText: null, headers: null, config: null };
-        jest.spyOn(service, 'getFirstPage').mockImplementation(() => new Observable(subscriber => subscriber.next(response)))
+      var mockData: Series[] = [{ id: '0', title: 'test'}];
+      var response: AxiosResponse<Series[]> = { data: mockData, status: null, statusText: null, headers: null, config: null };
+      jest.spyOn(service, 'getPage').mockImplementation(() => new Observable(subscriber => subscriber.next(response)))
       expect(await controller.getSeries()).toBe(mockData);
     });
+
+    // it('should yield 204 when data is empty', async () => {
+    //   var response: AxiosResponse<Series[]> = { data: null, status: 204, statusText: null, headers: null, config: null };
+    //   jest.spyOn(service, 'getPage').mockImplementation(() => new Observable(subscriber => subscriber.next(response)));
+    //   controller.getSeries();
+    //   expect(function(){ controller.getSeries() }).toThrow();
+    // });
   });
 });
