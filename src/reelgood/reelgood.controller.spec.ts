@@ -21,7 +21,7 @@ describe('ReelGoodController', () => {
 
   describe('getSeries', () => {
     it('should return some data', async () => {
-      var mockData: Series[] = [{ id: '0', title: 'test'}];
+      var mockData: Series[] = [{ id: '0', title: 'test' }];
       var response: AxiosResponse<Series[]> = { data: mockData, status: null, statusText: null, headers: null, config: null };
       jest.spyOn(service, 'getPage').mockImplementation(() => new Observable(subscriber => subscriber.next(response)))
       expect(await controller.getSeries()).toBe(mockData);

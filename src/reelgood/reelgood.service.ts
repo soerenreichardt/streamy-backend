@@ -35,7 +35,7 @@ export class ReelGoodService {
 
         while(true) {
             let response = await this.getPage(serviceName, page++).toPromise();
-            if (response.status == HttpStatus.NO_CONTENT) break;
+            if (response.status == HttpStatus.NO_CONTENT || page == 2) break;
             response.data.map(data => seriesData.push(data));
         }
 

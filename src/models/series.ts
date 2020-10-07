@@ -1,4 +1,4 @@
-export interface Series {
-    id: string,
-    title: string
+export class Series {
+    id: string;
+    title: string;
 }

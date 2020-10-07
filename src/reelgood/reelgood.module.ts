@@ -1,4 +1,4 @@
-import { HttpModule, HttpService, Module } from '@nestjs/common';
+import { Global, HttpModule, Module } from '@nestjs/common';
 import { ReelGoodController } from './reelgood.controller';
 import { ReelGoodService } from './reelgood.service';
 
