@@ -1,10 +1,10 @@
-import { HttpCode, HttpException, HttpService, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpService, HttpStatus, Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
-import { Series } from 'src/models/series';
+import { Series } from 'src/series/series.dto';
 import { map, filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-const API = "https://api.reelgood.com/v2";
+const API = "https://api.reelgood.com/v2"; // TODO: upgrade to v3.0
 
 @Injectable()
 export class ReelGoodService {
@@ -36,7 +36,7 @@ export class ReelGoodService {
         while(true) {
             let response = await this.getPage(serviceName, page++).toPromise();
             if (response.status == HttpStatus.NO_CONTENT || page == 2) break;
-            response.data.map(data => seriesData.push(data));
+            response.data.forEach(data => seriesData.push(data));
         }
 
         return new Promise(resolve => resolve(seriesData));
