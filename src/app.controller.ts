@@ -1,10 +1,9 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Neo4jService } from './neo4j/neo4j.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService, private neo4j: Neo4jService) {}
+  constructor(private readonly appService: AppService) {}
 
   @Get()
   getHello(): string {
